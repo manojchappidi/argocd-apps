@@ -1,0 +1,7 @@
+service:
+  type: ClusterIP
+
+coder:
+  env:
+    - name: CODER_ACCESS_URL
+      value: "http://localhost:3000"
