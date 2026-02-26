@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: coder-git
+  name: coder-test
   namespace: argocd
 
 spec:

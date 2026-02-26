@@ -1,6 +1,6 @@
 service:
-  type: NodePort
-
+  type: ClusterIP
+ 
 coder:
   env:
     - name: CODER_ACCESS_URL
