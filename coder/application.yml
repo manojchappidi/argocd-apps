@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: coder-test
+  name: coder-deploy
   namespace: argocd
 
 spec:
-  project: default
+  project: Argo-coder
 
   source:
     repoURL: https://helm.coder.com/v2
