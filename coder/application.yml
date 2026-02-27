@@ -19,6 +19,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: coder
 
+
   syncPolicy:
     automated:
       prune: true
