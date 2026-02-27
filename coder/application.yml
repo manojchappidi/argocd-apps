@@ -8,9 +8,9 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/manojchappidi/argocd-apps.git
-    targetRevision: main
-    path: coder
+    repoURL: https://helm.coder.com/v2
+    chart: coder
+    targetRevision: 2.29.5
     helm:
       valueFiles:
         - values.yaml
