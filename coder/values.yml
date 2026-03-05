@@ -8,3 +8,11 @@ coder:
 
     - name: CODER_PG_CONNECTION_URL
       value: "postgresql://coder:coder@postgres:5432/coder?sslmode=disable"
+
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "256Mi"
+    limits:
+      cpu: "500m"
+      memory: "512Mi"
