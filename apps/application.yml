@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: coder-deploy
-  namespace: argocd
+  namespace: argocd-poc
 
 spec:
   project: default

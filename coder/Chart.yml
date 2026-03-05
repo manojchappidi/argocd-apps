@@ -1,0 +1,12 @@
+apiVersion: v2
+name: coder
+description: Coder deployment
+type: application
+
+version: 0.1.0
+appVersion: "2.29.5"
+
+dependencies:
+  - name: coder
+    version: "2.29.5"
+    repository: "https://helm.coder.com/v2"

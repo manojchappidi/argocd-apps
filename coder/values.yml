@@ -1,7 +1,10 @@
 service:
-  type: ClusterIP
- 
+  type: LoadBalancer
+
 coder:
   env:
     - name: CODER_ACCESS_URL
       value: "http://localhost:3000"
+
+    - name: CODER_PG_CONNECTION_URL
+      value: "postgresql://coder:coder@postgres:5432/coder?sslmode=disable"
