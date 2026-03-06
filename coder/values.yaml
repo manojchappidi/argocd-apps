@@ -1,21 +1,16 @@
-service:
-  type: NodePort       # changed from LoadBalancer
-  nodePort: 30000      # port to access via minikube ip
-  port: 80             # internal service port
-  targetPort: 8080     # container port (usually 8080 in Coder chart)
-
 coder:
   env:
     - name: CODER_ACCESS_URL
-      value: "http://192.168.49.2:30000"   # replace with `minikube ip` later
-
-    - name: CODER_PG_CONNECTION_URL
-      value: "postgresql://coder:coder@postgres:5432/coder?sslmode=disable"
-
-  resources:
-    requests:
-      cpu: "200m"
-      memory: "256Mi"
-    limits:
-      cpu: "500m"
-      memory: "512Mi"
+      value: "http://$(MINIKUBE_IP):30000"
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 8080
+    initialDelaySeconds: 60
+    periodSeconds: 10
+  readinessProbe:
+    httpGet:
+      path: /healthz
+      port: 8080
+    initialDelaySeconds: 60
+    periodSeconds: 10
