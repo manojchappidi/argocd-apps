@@ -1,24 +1,29 @@
-coder:
-  env:
-    - name: CODER_ACCESS_URL
-      value: "http://$(MINIKUBE_IP):30000"
-  livenessProbe:
-    httpGet:
-      path: /healthz
-      port: 8080
-    initialDelaySeconds: 60
-    periodSeconds: 10
-  readinessProbe:
-    httpGet:
-      path: /healthz
-      port: 8080
-    initialDelaySeconds: 60
-    periodSeconds: 10
-
-  resources:
-    requests:
-      cpu: "200m"
-      memory: "512Mi"
-    limits:
-      cpu: "500m"
-      memory: "1Gi"
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: coder
+  namespace: argocd-poc
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
+    path: coder                       # path to the Helm chart inside repo
+    targetRevision: test-1          # branch, tag, or commit
+    helm:
+      valueFiles:
+        - coder/values.yaml                 # relative to chart folder
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd-poc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+  ignoreDifferences:
+    - group: ""
+      kind: Service
+      name: coder
+      jsonPointers:
+        - /spec/ports/0/nodePort
