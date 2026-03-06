@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
     targetRevision: main
-    path: 'coder'                # folder containing Chart.yaml
+    path: 'coder'             # folder containing Chart.yaml and values.yml
     helm:
       valueFiles:
-        - values.yml            # local values file inside the chart folder
+        - values.yml          # local values file in coder/ folder
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-poc

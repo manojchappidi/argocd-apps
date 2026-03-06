@@ -7,7 +7,7 @@ service:
 coder:
   env:
     - name: CODER_ACCESS_URL
-      value: "http://localhost:30000"   # replace with `minikube ip` later
+      value: "http://192.168.49.2:30000"   # replace with `minikube ip` later
 
     - name: CODER_PG_CONNECTION_URL
       value: "postgresql://coder:coder@postgres:5432/coder?sslmode=disable"
