@@ -3,23 +3,18 @@ kind: Application
 metadata:
   name: coder-2
   namespace: argocd-poc
-
 spec:
   project: default
-
   source:
-    repoURL: https://github.com/manojchappidi/argocd-apps.git
-    chart: coder
-    targetRevision: 2.29.7
-    path: 'coder'
+    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
+    targetRevision: main
+    path: 'coder'                # folder containing Chart.yaml
+    helm:
       valueFiles:
-        - values.yml
-
+        - values.yml            # local values file inside the chart folder
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
-
-
   syncPolicy:
     automated:
       prune: true
