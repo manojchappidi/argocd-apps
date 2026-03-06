@@ -13,7 +13,7 @@ spec:
     targetRevision: 2.29.7
     helm:
       valueFiles:
-        - values.yaml
+        - values.yml
 
   destination:
     server: https://kubernetes.default.svc

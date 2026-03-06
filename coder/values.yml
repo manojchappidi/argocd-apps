@@ -1,10 +1,13 @@
 service:
-  type: LoadBalancer
+  type: NodePort       # changed from LoadBalancer
+  nodePort: 30000      # port to access via minikube ip
+  port: 80             # internal service port
+  targetPort: 8080     # container port (usually 8080 in Coder chart)
 
 coder:
   env:
     - name: CODER_ACCESS_URL
-      value: "http://localhost:3000"
+      value: "http://localhost:30000"   # replace with `minikube ip` later
 
     - name: CODER_PG_CONNECTION_URL
       value: "postgresql://coder:coder@postgres:5432/coder?sslmode=disable"
