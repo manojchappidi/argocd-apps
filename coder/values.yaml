@@ -14,3 +14,11 @@ coder:
       port: 8080
     initialDelaySeconds: 60
     periodSeconds: 10
+
+  resources:
+    requests:
+      cpu: "200m"
+      memory: "512Mi"
+    limits:
+      cpu: "500m"
+      memory: "1Gi"
