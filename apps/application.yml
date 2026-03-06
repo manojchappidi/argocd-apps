@@ -11,7 +11,7 @@ spec:
     repoURL: https://github.com/manojchappidi/argocd-apps.git
     chart: coder
     targetRevision: 2.29.7
-    helm:
+    path: 'coder'
       valueFiles:
         - values.yml
 
