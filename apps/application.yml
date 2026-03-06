@@ -8,7 +8,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://helm.coder.com/v2
+    repoURL: https://github.com/manojchappidi/argocd-apps.git
     chart: coder
     targetRevision: 2.29.7
     helm:
