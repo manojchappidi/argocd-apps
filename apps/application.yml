@@ -11,7 +11,7 @@ spec:
     path: 'coder'             # folder containing Chart.yaml and values.yml
     helm:
       valueFiles:
-        - values.yml          # local values file in coder/ folder
+        - values.yaml          # local values file in coder/ folder
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
