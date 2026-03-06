@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
+    repoURL: 'https://helm.coder.com/v2'
     targetRevision: main
     path: 'coder'             # folder containing Chart.yaml and values.yml
     helm:
