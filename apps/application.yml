@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: coder-2
+  name: coder
   namespace: argocd-poc
 spec:
   project: default
   source:
-    repoURL: 'https://helm.coder.com/v2'
-    targetRevision: main
-    path: 'coder'             # folder containing Chart.yaml and values.yml
+    repoURL: 'https://helm.coder.com/v2'   # Helm repo
+    chart: coder                           # chart name
+    targetRevision: 2.29.7                 # chart version
     helm:
       valueFiles:
-        - values.yaml          # local values file in coder/ folder
+        - values.yaml                      # your custom values file
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
