@@ -6,12 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'       # Replace with your Git repo URL
+    repoURL: 'https://helm.coder.com/v2'
     chart: coder
     targetRevision: 2.29.5
     helm:
-      valueFiles:
-        - coder/values.yaml                # Path relative to repo root
+      valueFiles:           # <-- change from valuesFiles to valueFiles
+        - values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
@@ -21,9 +21,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - group: ""                            # core API group
-      kind: Service
-      name: coder
-      jsonPointers:
-        - /spec/ports/0/nodePort

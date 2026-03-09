@@ -1,29 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: coder
-  namespace: argocd-poc
-spec:
-  project: default
-  source:
-    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
-    path: coder                       # path to the Helm chart inside repo
-    targetRevision: test-1          # branch, tag, or commit
-    helm:
-      valueFiles:
-        - coder/values.yaml                 # relative to chart folder
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: argocd-poc
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-  ignoreDifferences:
-    - group: ""
-      kind: Service
-      name: coder
-      jsonPointers:
-        - /spec/ports/0/nodePort
+# coder/values.yaml
+# Minikube-ready Coder configuration
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30990
+
+database:
+  host: postgres       # your postgres service name
+  port: 5432
+  user: coder
+  password: coderpass
+  name: coderdb
+
+postgresql:
+  enabled: false       # disable built-in Postgres since you have your own
+
+ingress:
+  enabled: false       # not using ingress for Minikube
+1
