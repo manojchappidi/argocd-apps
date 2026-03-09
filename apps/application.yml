@@ -1,19 +1,19 @@
-apiVersion: argoproj.io/v1alpha1
+kapiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: coder
+  name: coder1
   namespace: argocd-poc
 spec:
   project: default
   source:
-    repoURL: https://helm.coder.com/v2
-    chart: coder
-    targetRevision: 2.29.5
+    repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
+    path: coder        # <-- local chart folder
+    targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
   syncPolicy:
     automated:
