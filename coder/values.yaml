@@ -1,5 +1,8 @@
 # coder/values.yaml
-# Configuration for Coder Helm chart
+image:
+  repository: ghcr.io/coder/coder
+  tag: v2.29.5
+  pullPolicy: IfNotPresent
 
 deployment:
   enabled: true
