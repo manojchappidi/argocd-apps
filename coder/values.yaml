@@ -1,21 +1,24 @@
 # coder/values.yaml
-# Minikube-ready Coder configuration
+# Configuration for Coder Helm chart
 
 service:
-  type: NodePort
+  type: LoadBalancer
   port: 80
-  nodePort: 30990
 
 database:
-  host: postgres       # your postgres service name
+  host: postgres
   port: 5432
   user: coder
   password: coderpass
   name: coderdb
 
 postgresql:
-  enabled: false       # disable built-in Postgres since you have your own
+  enabled: false
 
 ingress:
-  enabled: false       # not using ingress for Minikube
-1
+  enabled: false
+
+coder:
+  env:
+    - name: CODER_PG_CONNECTION_URL
+      value: "postgres://coder:coderpass@postgres:5432/coderdb?sslmode=disable"

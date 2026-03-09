@@ -6,14 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://helm.coder.com/v2'
+    repoURL: https://helm.coder.com/v2
     chart: coder
     targetRevision: 2.29.5
     helm:
-      valueFiles:           # <-- change from valuesFiles to valueFiles
+      valueFiles:
         - values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
     namespace: argocd-poc
   syncPolicy:
     automated:
