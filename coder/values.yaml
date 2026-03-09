@@ -1,7 +1,11 @@
 # coder/values.yaml
 # Configuration for Coder Helm chart
 
+deployment:
+  enabled: true
+
 service:
+  enabled: true
   type: LoadBalancer
   port: 80
 

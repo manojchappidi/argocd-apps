@@ -1,0 +1,29 @@
+{{- if .Values.deployment.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coder
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: coder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coder
+  template:
+    metadata:
+      labels:
+        app: coder
+    spec:
+      containers:
+        - name: coder
+          image: codercom/coder:2.29.5
+          ports:
+            - containerPort: 80
+          env:
+          {{- range .Values.coder.env }}
+            - name: {{ .name }}
+              value: {{ .value | quote }}
+          {{- end }}
+{{- end }}

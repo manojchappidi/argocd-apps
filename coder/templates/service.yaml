@@ -1,0 +1,17 @@
+{{- if .Values.service.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: coder
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: coder
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: coder
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 80
+      protocol: TCP
+{{- end }}
