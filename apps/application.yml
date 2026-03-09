@@ -8,10 +8,15 @@ spec:
   source:
     repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
     path: coder
-    targetRevision: main
+    targetRevision: HEAD
     helm:
       valueFiles:
         - values.yaml
+      parameters:
+        - name: image.repository
+          value: ghcr.io/coder/coder
+        - name: image.tag
+          value: v2.29.5
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd-poc
