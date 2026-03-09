@@ -1,4 +1,4 @@
-kapiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: coder1
@@ -7,8 +7,8 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/manojchappidi/argocd-apps.git'
-    path: coder        # <-- local chart folder
-    targetRevision: HEAD
+    path: coder
+    targetRevision: main
     helm:
       valueFiles:
         - values.yaml
