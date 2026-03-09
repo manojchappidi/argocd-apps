@@ -1,17 +1,15 @@
-{{- if .Values.service.enabled }}
 apiVersion: v1
 kind: Service
 metadata:
   name: coder
-  namespace: {{ .Release.Namespace }}
+  namespace: argocd-poc
   labels:
     app: coder
 spec:
-  type: {{ .Values.service.type }}
+  type: LoadBalancer
   selector:
     app: coder
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 80
       targetPort: 80
       protocol: TCP
-{{- end }}

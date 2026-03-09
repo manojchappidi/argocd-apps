@@ -1,9 +1,8 @@
-{{- if .Values.deployment.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: coder
-  namespace: {{ .Release.Namespace }}
+  namespace: argocd-poc
   labels:
     app: coder
 spec:
@@ -18,12 +17,10 @@ spec:
     spec:
       containers:
         - name: coder
-          image: codercom/coder:2.29.5
+          image: ghcr.io/coder/coder:v2.31.3
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           env:
-          {{- range .Values.coder.env }}
-            - name: {{ .name }}
-              value: {{ .value | quote }}
-          {{- end }}
-{{- end }}
+            - name: CODER_PG_CONNECTION_URL
+              value: "postgres://coder:coderpass@postgres:5432/coderdb?sslmode=disable"
