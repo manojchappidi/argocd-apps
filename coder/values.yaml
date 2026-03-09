@@ -1,7 +1,7 @@
 # coder/values.yaml
 image:
   repository: ghcr.io/coder/coder
-  tag: v2.29.5
+  tag: v2.31.3
   pullPolicy: IfNotPresent
 
 deployment:
